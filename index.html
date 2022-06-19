@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<head>
+	<title>Couch booking</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">	
+	<style>
+	#contact-area{
+	background-color: white;
+	}
+	#yas{
+	margin-top: 5%;
+	}
+	
+	</style>
+	
+	
+</head>
+
+<body>
+
+	
+				
+		<div id="contact-area" class="container">
+		<div class="jumbotron" id="yas">
+				<h1>Book your couch today!</h1>
+		<p>Fill out the form to book exclusive access to our sleeping couch ;)</p>
+			
+			<form method="post" action="contactengine.php">
+			
+			<table class="table">
+			  <tbody>
+				<tr>
+				  <th scope="row">Name:</th>
+				  <td><input type="text" name="Name" id="Name" required/></td>
+				</tr>
+				<tr>
+					<th scope="row">E-mail<span style="font-size:0.8em">(leave empty if you don't want calendar invite)</span></th>
+					<td><input type="text" name="Email" id="Email"></td>
+				</tr>
+				<tr>
+				  <th scope="row">Time of check-in and duration</th>
+				  <td>
+
+				  <!-- DATERANGE  -->
+					<input type="text" name="datetimes" id="datetimes" value="Velg dato"/>
+					<script>
+					$(function() {
+					  $('input[name="datetimes"]').daterangepicker({
+						timePicker: true,
+						timePicker24Hour: true,
+						autoApply: true,
+						startDate: moment().startOf('hour'),
+						endDate: moment().startOf('hour').add(24, 'hour'),
+						locale: {
+						  format: 'YYYY-MM-DD hh:mm:ss',
+						  separator: " to "
+						}
+					  });
+					});
+					</script>
+				  </td>
+				  
+				</tr>
+			  </tbody>
+			</table>
+				<p><label for="Message"><b>Other comments:</b></label></p>
+				<textarea class="form-control" name="Message" id="Message"></textarea><br />
+				<input class="btn btn-primary" type="submit" name="submit" value="Submit" class="submit-button" />
+			</form>
+			<p align="center"><font color="#62656B">No check-ins are guaranteed.</font></p>
+			<div style="clear: both;"></div>		
+		</div>
+	</div>
+</body>
+
+
+</html>
